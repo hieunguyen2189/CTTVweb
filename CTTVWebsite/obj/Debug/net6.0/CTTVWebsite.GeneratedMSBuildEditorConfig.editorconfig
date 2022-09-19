@@ -1,0 +1,256 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CTTVWebsite
+build_property.RootNamespace = CTTVWebsite
+build_property.ProjectDir = C:\Users\CTTV\source\repos\Website\CTTVWebsite\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = C:\Users\CTTV\source\repos\Website\CTTVWebsite
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Admin/CheckScanList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2hlY2tTY2FuTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Admin/DataTester.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGF0YVRlc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Hold/HoldModel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9sZFxIb2xkTW9kZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Hold/HoldUnhold.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9sZFxIb2xkVW5ob2xkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Hold/SearchHoldSTT.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9sZFxTZWFyY2hIb2xkU1RULmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Hold/SearchOneHoldSTT.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9sZFxTZWFyY2hPbmVIb2xkU1RULmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Keypart/SearchKpNo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2V5cGFydFxTZWFyY2hLcE5vLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Keypart/SearchKpNoDate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2V5cGFydFxTZWFyY2hLcE5vRGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Keypart/SearchKpSn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2V5cGFydFxTZWFyY2hLcFNuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Keypart/SearchKpTV.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2V5cGFydFxTZWFyY2hLcFRWLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Keypart/SearchOldKpSn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2V5cGFydFxTZWFyY2hPbGRLcFNuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Repaire/ErrDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwYWlyZVxFcnJEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Repaire/RepairSum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwYWlyZVxSZXBhaXJTdW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Repaire/RpinDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwYWlyZVxScGluRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Repaire/RpInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwYWlyZVxScEluZm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Repaire/RpoutDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwYWlyZVxScG91dERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/SnDetail/FactoryOutput.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU25EZXRhaWxcRmFjdG9yeU91dHB1dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/SnDetail/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU25EZXRhaWxcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/SnDetail/InOutProduction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU25EZXRhaWxcSW5PdXRQcm9kdWN0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/SnDetail/OutSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU25EZXRhaWxcT3V0U3VtbWFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/SnDetail/SearchDetailedIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU25EZXRhaWxcU2VhcmNoRGV0YWlsZWRJbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/SnDetail/SearchDetailedOut.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU25EZXRhaWxcU2VhcmNoRGV0YWlsZWRPdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/SnDetail/SearchInOutTotal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU25EZXRhaWxcU2VhcmNoSW5PdXRUb3RhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/SnDetail/SearchModelNotShip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU25EZXRhaWxcU2VhcmNoTW9kZWxOb3RTaGlwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Stock/Bincode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tcQmluY29kZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Stock/BINSum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tcQklOU3VtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Stock/DetailOBI.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tcRGV0YWlsT0JJLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Stock/DetailQA.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tcRGV0YWlsUUEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Stock/FacSum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tcRmFjU3VtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Stock/InstockInven.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tcSW5zdG9ja0ludmVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Stock/OBIDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tcT0JJRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Stock/OBIInOut.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tcT0JJSW5PdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Stock/OBIInven.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tcT0JJSW52ZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Stock/OBIStock.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tcT0JJU3RvY2suY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Stock/OPTracking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tcT1BUcmFja2luZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Stock/QAInOut.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tcUUFJbk91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Stock/SearchInstock.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvY2tcU2VhcmNoSW5zdG9jay5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Wiptracking/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lwdHJhY2tpbmdcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Wiptracking/MOSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lwdHJhY2tpbmdcTU9TdW1tYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Wiptracking/Over3day.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lwdHJhY2tpbmdcT3ZlcjNkYXkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Wiptracking/plan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lwdHJhY2tpbmdccGxhbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Wiptracking/QAHOLD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lwdHJhY2tpbmdcUUFIT0xELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Wiptracking/SearchByPallet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lwdHJhY2tpbmdcU2VhcmNoQnlQYWxsZXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Wiptracking/SearchByPoNo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lwdHJhY2tpbmdcU2VhcmNoQnlQb05vLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Wiptracking/SearchBySN.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lwdHJhY2tpbmdcU2VhcmNoQnlTTi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Wiptracking/SearchGroupName.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lwdHJhY2tpbmdcU2VhcmNoR3JvdXBOYW1lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Wiptracking/SearchHistorySN.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lwdHJhY2tpbmdcU2VhcmNoSGlzdG9yeVNOLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Wiptracking/SearchInOut.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lwdHJhY2tpbmdcU2VhcmNoSW5PdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Wiptracking/SearchMO.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lwdHJhY2tpbmdcU2VhcmNoTU8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-iszbq52ai9
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Shared/_AuthLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BdXRoTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-3wqrihz8s4
+
+[C:/Users/CTTV/source/repos/Website/CTTVWebsite/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-g7yiumu234

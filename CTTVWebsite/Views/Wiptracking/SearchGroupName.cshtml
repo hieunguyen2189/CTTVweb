@@ -1,0 +1,180 @@
+﻿@{
+    ViewData["Title"] = "SearchGroupName";
+    ViewData["Show"] = "Inven";
+    ViewData["Active"] = "SearchGroupName";
+}
+<h1>Search Group Name</h1>
+
+<div class="card-body bg-light">
+    <form method="post" asp-action="SearchGroupName">
+        <div class="row">
+      <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="optionchoose">Model Name</label>
+                    <select class="custom-select custom-select-sm mb-3" required id="modelName" name="modelName">
+                        <option selected="" value="">Open this select menu</option>
+                        @{
+                            string modelNameSl = "";
+                            if (ViewBag.modelNameSl != null)
+                            {
+                                modelNameSl = string.Format("{0}", ViewBag.modelNameSl);
+                            }
+
+                            if (ViewBag.ModelName != null)
+                            {
+                                foreach (var objModuleName in ViewBag.ModelName)
+                                {
+                                    <!option value="@objModuleName" @if(ViewBag.modelName != null && modelNameSl == objModuleName.ToString()){@("selected");}>@objModuleName</!option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="optionchoose">Group Name</label>
+                    <select class="custom-select custom-select-sm mb-3" required id="groupName" name="groupName">
+                        <option selected="" value="">Open this select menu</option>
+                       
+
+                        @{
+                            string groupNameSl = null;
+                            if (ViewBag.groupNameSl != null)
+                            {
+                                groupNameSl = string.Format("{0}", ViewBag.GroupNameSl);
+                            }
+
+                            if (ViewBag.GroupName != null)
+                            {
+                                foreach (var objGroupName in ViewBag.GroupName)
+                                {
+                                    <!option value="@objGroupName" @if(groupNameSl != null && objGroupName !=null && groupNameSl == objGroupName.ToString()){@("selected");}>@objGroupName</!option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+       </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-6">
+                <button class="btn btn-primary form-control-sm" type="submit">Search </button>
+            </div>
+        </div>
+    </form>
+</div>
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+<div class="navbar-vertical-divider">
+    <hr class="navbar-vertical-hr my-2">
+</div>
+
+
+<table id="SearchBySN" class="table table-sm table-dashboard  no-wrap mb-0 fs--1 w-100" style="text-align:center">
+    <thead class="bg-200 text-900">
+        <tr>
+                        <th width="1%">
+            </th>
+            <th>
+                SERIAL NUMBER
+            </th>
+            <th>
+                MODEL NAME
+            </th>
+            <th>
+                GROUP NAME
+            </th>
+                 <th>
+                IN STATION TIME
+            </th>
+            <th>
+                PALLET_NO
+            </th>
+
+        </tr>
+    </thead>
+    <tbody class="list">
+        @if (Model != null)
+        {
+           var counter = 1;
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="1%">
+                        @counter
+                        @{
+                            counter = counter + 1;
+                        }
+                    </td>
+                    <td width="20%">
+                        @obj.SERIAL_NUMBER
+                    </td>
+                    <td width="10%">
+                        @obj.MODEL_NAME
+                    </td>
+                    <td width="10%">
+                        @obj.GROUP_NAME
+                    </td>
+                                      <td width="20%">
+                        @obj.IN_STATION_TIME
+                    </td>
+                    <td width="10%">
+                        '@obj.PALLET_NO
+                    </td>
+
+  
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+
+@section Scripts
+{
+
+<script>
+
+    var dataTable = $('#SearchBySN').DataTable({
+        "sDom": "<'row mb-1' <'col-2'B><'col-2'l><'col-2 text-right'i><'col-2'f><'col-4'p>><'table-responsive't><'row'>",
+        filter: true,
+        "searching": true,
+        "scrollCollapse": true,
+        "paging": true,
+        "lengthMenu": [ [10, 100, 200, 500, -1], [10, 100, 200, 500, "All"] ],
+        // "bSort": true,
+        "info": true,
+
+        buttons: [
+
+            {
+                extend: 'excelHtml5',
+                text: 'Excel',
+                className: 'btn btn-primary hide',
+                title: 'Data export',
+                // titleAttr: 'Export all rows to Excel file',
+            },
+
+       
+
+            {
+                extend: 'copyHtml5',
+                text: 'Copy Data',
+                className: 'btn btn-primary hide',
+                // titleAttr: 'Copy all rows to clipboard',
+            },
+        ],
+
+    });
+
+
+</script>
+
+
+
+}

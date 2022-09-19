@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CTTVWebsite</title>
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/img/favicons/favicon.ico">
+    <link rel="manifest" href="~/assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="~/assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <script src="assets/js/config.navbar-vertical.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="~/assets/lib/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet">
+    <link href="~/assets/lib/datatables-bs4/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="~/assets/lib/datatables.net-responsive-bs4/responsive.bootstrap4.css" rel="stylesheet">
+    <link href="~/assets/lib/leaflet/leaflet.css" rel="stylesheet">
+    <link href="~/assets/lib/leaflet.markercluster/MarkerCluster.css" rel="stylesheet">
+    <link href="~/assets/lib/leaflet.markercluster/MarkerCluster.Default.css" rel="stylesheet">
+    <link href="~/assets/css/theme.css" rel="stylesheet">
+    <link href="~/css/custom.css" rel="stylesheet">
+    <!-- Datatable ===============================================-->
+    <link rel="stylesheet" type="text/css" href="~/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/buttons.bootstrap4.min.css" />
+    @RenderSection("Stylesheets",false/*required*/)
+</head>
+<body>
+
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+
+         <div class="container" data-layout="container">
+              @RenderBody()
+        
+      </div>
+
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/lib/@@fortawesome/all.min.js"></script>
+    <script src="~/assets/lib/stickyfilljs/stickyfill.min.js"></script>
+    <script src="~/assets/lib/sticky-kit/sticky-kit.min.js"></script>
+    <script src="~/assets/lib/is_js/is.min.js"></script>
+    <script src="~/assets/lib/lodash/lodash.min.js"></script>
+    <script src="~/assets/lib/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <link href="~/css/font-google.css" rel="stylesheet">
+    <script src="~/assets/lib/chart.js/Chart.min.js"></script>
+    <script src="~/assets/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/assets/lib/datatables-bs4/dataTables.bootstrap4.min.js"></script>
+    <script src="~/assets/lib/datatables.net-responsive/dataTables.responsive.js"></script>
+    <script src="~/assets/lib/datatables.net-responsive-bs4/responsive.bootstrap4.js"></script>
+    <script src="~/assets/lib/leaflet/leaflet.js"></script>
+    <script src="~/assets/lib/leaflet.markercluster/leaflet.markercluster.js"></script>
+    <script src="~/assets/lib/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js"></script>
+
+    <script type="text/javascript" src="~/js/datatables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/js/datatables/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="~/js/datatables/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="~/js/datatables/buttons.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="~/js/datatables/jszip.min.js"></script>
+    <script type="text/javascript" src="~/js/datatables/pdfmake.min.js"></script>
+    @*<script type="text/javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>*@
+    <script type="text/javascript" src="~/js/datatables/buttons.html5.min.js"></script>
+
+    <script src="~/assets/js/theme.js"></script>
+    @RenderSection("Scripts",false/*required*/);
+
+    @if (ViewData["Show"] != null)
+    {
+
+
+        <script type="text/javascript">
+            document.getElementById("@ViewData["Show"]").classList.add("show");
+        </script>
+    }
+
+    @if (ViewData["Active"] != null)
+    {
+        <script type="text/javascript">
+            list = document.getElementsByClassName('@ViewData["Active"]');
+            for (var i = 0; i < list.length; ++i) {
+               list[i].classList.add('active');
+            }
+        </script>
+    }
+
+</body>
+</html>

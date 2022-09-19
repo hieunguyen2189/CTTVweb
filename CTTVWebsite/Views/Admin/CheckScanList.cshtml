@@ -1,0 +1,191 @@
+﻿
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Admin Panel";
+    ViewData["Show"] = "SetupNewModel";
+    ViewData["Active"] = "CheckScanList";
+}
+
+    <div class="card-body bg-light">
+   @Html.AntiForgeryToken()
+   <div class="row">
+      <div class="col-lg-2">
+         <p>Raw scan list data:</p>
+      </div>
+      <div class="col-lg-10">
+         <textarea id="RawScanlistData" placeholder="Route_name     Part_no     Part_name    Digits     Position     Length_digits   Total_digits" style="width:100%;" rows=10 cols=100></textarea>
+      </div>
+   </div>
+    @*<div class="row">
+        <div class="col-lg-3">
+          <p>SCANNING ROUTE NAME:</p>
+         <input id=ScanRoute placeholder='SCANNING ROUTE NAME' required/>
+      </div>
+       <div class="col-lg-3">
+          <p>KP_LENGTH:</p>
+         <input id=KP_LENGTH placeholder='KP_LENGTH' required/>
+      </div>
+      <div class="col-lg-3">
+          <p>Key Part No:</p>
+         <input id=PartNo placeholder='Key Part No' required/>
+      </div>
+      
+     </div>
+     <br/>
+    <div class="row">
+        <div class="col-lg-3">
+          <p>COM_STR1:</p>
+         <input id=COM_STR1 placeholder='COM_STR1' required/>
+      </div>
+      <div class="col-lg-3">
+           <p>Position 1:</p>
+         <input id=Position1 required placeholder='Position1'/>
+      </div>
+      <div class="col-lg-3">
+          <p>COM_STR2:</p>
+         <input id=COM_STR2   placeholder='COM_STR2'/>
+      </div>
+      <div class="col-lg-3">
+          <p>Position 2:</p>
+         <input id=Position2  placeholder='Position2'/>
+      </div>
+   </div>*@
+   <br/>
+  
+   <div class="row">
+      <div class="col-lg-2">
+         <button class="btn btn-primary form-control-sm" id='submitCheck' type="button">Search</button> 
+      </div>
+      <div class="col-lg-2">
+         <div class="loader"></div>
+      </div>
+   </div>
+   <br/>
+   <div class="row">
+      <div class="col-lg-2">
+         <p>Key part manage SQL:</p>
+      </div>
+      <div class="col-lg-10">
+         <textarea id="sqlArea" style="width:100%;" cols=100></textarea>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-2">
+         <p>Unique SQL:</p>
+      </div>
+      <div class="col-lg-10">
+         <textarea id="sqlUniqueArea" style="width:100%;" cols=100></textarea>
+      </div>
+   </div>
+   <div class="row">
+      <table class="table table-striped" id="result">
+         <thead-light>
+            <tr>
+             <th scope="col">Scanning route name</th>
+             <th scope="col">KP_LENGTH</th>
+               <th scope="col">Part No</th>
+               <th scope="col">Key Part Name</th>
+               @*<th scope="col">COM_STR1</th>
+               <th scope="col">Position 1</th>*@
+               <th scope="col">KP manage check</th>
+               <th scope="col">Rules Found</th>
+               <th scope="col">Uniqueness Control</th>
+               <th scope="col">Unique check</th>
+            </tr>
+         </thead>
+         <tbody>
+         </tbody>
+      </table>
+   </div>
+</div>
+@section Scripts
+{
+<script>
+ $("#submitCheck").click(function(){
+		$(".loader").css('visibility', 'visible');
+		var arrayOfLines = $('#RawScanlistData').val().split('\n');
+		$.each(arrayOfLines, function(index, item) {
+			checkData(item);
+		});
+   });
+   
+   
+   function checkData(item){
+	   var strArr = item.split(/\t/);
+	   var ScanRouteData = strArr[0];
+       var KP_LENGTHData = strArr[6];
+       var PartNoData = strArr[1];
+       var PartNameData = strArr[2];
+       var COM_STR1Data = strArr[3];
+       var Position1Data = strArr[4];
+
+	    $.post("/Admin/CheckScanList",
+     {
+       ScanRoute: ScanRouteData,
+       KP_LENGTH : KP_LENGTHData,
+       PartNo: PartNoData,
+       COM_STR1: COM_STR1Data,
+       Position1: Position1Data
+   
+     }, 
+   function(data, status){
+            Position1 = Position1Data.split('-');
+             STR_START1 = Position1[0];
+             STR_END1 = Position1[1] - Position1[0] + 1;
+             var sqlArea = $("textarea#sqlArea");
+             var Notes ='';
+         if(data.scanList == '[]')
+         {
+            ScanList = "<span class='badge badge-soft-warning badge-pill'>Not found</span>"
+            sqlQuery = "INSERT INTO SFIS1.C_KEYPARTS_MANAGE_T (KEY_PART_NO,KP_LENGTH,STR_START1,STR_END1,COM_STR1,STR_START2,STR_END2,CREATE_TIME,EMP_NO) VALUES ('"+PartNoData+"','"+KP_LENGTHData+"','"+STR_START1+"','"+STR_END1+"','"+COM_STR1Data+"','0','0',sysdate,'V0513581');"
+            sqlArea.val( sqlArea.val() + sqlQuery + "\n");
+         }
+         else
+         {
+             var foundStr ='';
+             
+             var parsescanList = JSON.parse( data.scanList );
+             console.log(parsescanList);
+               if (parsescanList.length > 0 ){
+                   $.each( parsescanList, function( key, value ) {
+                       foundStr = foundStr +  parsescanList[key].KEY_PART_NO + " => " + parsescanList[key].CHECK_RESULT +'<br/>';
+                    });
+               }
+             ScanList = "<span class='badge badge-soft-success badge-pill'>Found</span><br/>";
+             Notes = foundStr;
+             
+               
+         }
+        $(".loader").css('visibility', 'hidden');
+        
+        if(data.unique == 'FOUND')
+         {
+            Unique = "<span class='badge badge-soft-success badge-pill'>"+data.unique+"</span>"
+           
+         }
+         else
+         {
+            Unique = "<span class='badge badge-soft-warning badge-pill'>"+data.unique+"</span>"
+            sqlQuery2 = "";
+            var sqlArea = $("textarea#sqlUniqueArea");
+               //sqlArea.val( sqlArea.val() + sqlQuery2 + "\n");
+               var parseKpName = JSON.parse( data.kP_NAME );
+               if (parseKpName.length > 0 ){
+                   sqlArea.append("INSERT INTO SFIS1.C_KEYPARTS_TAG_T(KP_NAME,TAG_FLAG,TAG_GROUP) VALUES ('"+parseKpName[0].KP_NAME+"','"+parseKpName[0].TAG_FLAG+"','"+parseKpName[0].TAG_GROUP+"');"  + "\n");
+         
+               }
+                    
+               }
+        UniqueOrigin = "Yes";
+        if(KP_LENGTHData == STR_END1){
+            UniqueOrigin = "No"
+        }
+        $('#result > tbody:last-child').append('<tr><td>'+ScanRouteData+'</td><td>'+KP_LENGTHData+'</td><td>'+PartNoData+'</td><td>'+PartNameData+'</td><td>'+ScanList+'</td><td>'+Notes+'</td><td>'+UniqueOrigin+'</td><td>'+Unique+'</td></tr>');
+   
+     
+     });
+	   
+   }
+   
+</script>
+}

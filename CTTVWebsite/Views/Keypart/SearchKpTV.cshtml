@@ -1,0 +1,224 @@
+﻿
+@{
+    ViewData["Title"] = "Keypart by TV SN";
+    ViewData["Show"] = "Keypart";
+    ViewData["Active"] = "SearchKpsNTV";
+}
+
+<h1>@ViewData["Title"]</h1>
+@section Stylesheets
+{
+<link href="~/assets/lib/flatpickr/flatpickr.min.css" rel="stylesheet">
+}
+<div class="card-body bg-light">
+    <form method="post" asp-action="SearchKpTV" id="idInputForm">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="optionchoose">TV Serial Number</label>
+                         <textarea class="form-control form-control-sm classInputBox" rows=8 required name="TVSn" placeholder="12503924$6703918&#10;12485709$8531118&#10;12485704$8201134" type="text" value="" >@if(ViewBag.TVSn != null ){@ViewBag.TVSn}</textarea>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="optionchoose">Key Part No</label>
+                    <input class="classInputBox" value="@if(ViewBag.KpNo != null ){@ViewBag.KpNo}"  name="KpNo" required/>
+                </div>
+            </div>
+              <div class="col-lg-4">
+                <div class="form-check">
+                    
+  <input class="form-check-input" id="OBI" name="OBI" type="checkbox" value="Yes"  @if(ViewBag.OBI != null && ViewBag.OBI == "Yes"){@("checked");} />
+   <label class="form-check-label" for="flexCheckDefault">Show OBI</label>
+   <br />
+    <input class="form-check-input" id="QA" name="QA" type="checkbox" value="Yes"  @if(ViewBag.QA != null && ViewBag.QA == "Yes"){@("checked");} />
+   <label class="form-check-label" for="flexCheckDefault">Show QA</label>
+ 
+</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <button class="btn btn-primary form-control-sm" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+<div class="alert alert-danger" style="display: none;" id="checkValidInput" role="alert">Your input data is invalid</div>
+<div class="navbar-vertical-divider">
+    <hr class="navbar-vertical-hr my-2">
+</div>
+<div class="alert alert-danger" style="display: none;" id="checkValidInput" role="alert">Your input data is invalid</div>
+<div class="navbar-vertical-divider">
+    <hr class="navbar-vertical-hr my-2">
+</div>
+
+
+<table id="SearchKpSn" class="table table-sm table-dashboard  no-wrap mb-0 fs--1 w-100" style="text-align:center">
+    <thead class="bg-200 text-900">
+        <tr>
+            <th>
+            </th>
+            <th>
+                SERIAL NUMBER
+            </th>
+                    <th width="10%">
+               MODEL NAME
+            </th>
+                        <th>
+                KEY PART NO
+                </th>
+            <th>
+               KEY PART SN
+            </th>
+            <th>
+                KEY PART TIME
+            </th>
+                          @if (ViewBag.OBI == "Yes")
+            {
+                 <th>
+               OBI_IN
+            </th>
+                       <th>
+               OBI TIME
+            </th>
+               
+            } @if (ViewBag.QA == "Yes")
+            {
+
+                <th>
+                    QA_IN
+                </th>
+
+                <th>
+                    QA TIME
+            </th>}
+             <th>
+               CURRENT GROUP
+            </th>
+            
+                       <th>
+               LAST IN_STATION_TIME
+            </th>
+              <th>
+               PALLET NO
+            </th>
+
+     
+ 
+    
+
+        </tr>
+    </thead>
+    <tbody class="list">
+        @if (Model != null)
+        {
+            var counter = 1;
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="1%">
+                        @counter
+                        @{
+                            counter = counter + 1;
+                        }
+                    </td>
+                    <td width="15%">
+                        @obj.SERIAL_NUMBER
+                    </td>
+                                            <td width="10%">
+                        @obj.MODEL_NAME   
+                        </td>
+                                        <td width="10%">
+                        @obj.KEY_PART_NO
+                        </td>
+                    <td width="10%">
+                        @obj.KEY_PART_SN
+                    </td>
+                                        <td width="15%">
+                        @obj.WORK_TIME   
+                        </td>
+                                            @if (ViewBag.OBI == "Yes")
+            {
+                   <td >
+                        @obj.OBI_RECORD
+                    </td>
+                                        <td >
+                        @obj.OBI_TIME
+                    </td>
+               
+            } @if (ViewBag.QA == "Yes")
+            {
+
+                <td >
+                        @obj.QA_RECORD
+                    </td>
+                                       <td >
+                        @obj.QA_TIME
+                    </td>}
+                    <td width="10%">
+                        @obj.GROUP_NAME
+                    </td>
+                    <td width="15%">
+                        @obj.IN_STATION_TIME
+                    </td>
+                    <td width="10%">
+                        '@obj.PALLET_NO
+                    </td>
+                </tr>
+
+            }  
+        }
+
+    </tbody>
+</table>
+
+@section Scripts
+{
+
+    <script src="~/js/custom.js"></script>
+
+<script>
+
+    var dataTable = $('#SearchKpSn').DataTable({
+        "sDom": "<'row mb-1' <'col-2'B><'col-2'l><'col-2 text-right'i><'col-2'f><'col-4'p>><'table-responsive't><'row'>",
+        filter: true,
+        "searching": true,
+        "scrollCollapse": true,
+        "paging": true,
+        "lengthMenu": [ [10, 100, 200, 500, -1], [10, 100, 200, 500, "All"] ],
+        // "bSort": true,
+        "info": true,
+
+        buttons: [
+
+            {
+                extend: 'excelHtml5',
+                text: 'Excel',
+                className: 'btn btn-primary hide',
+                title: 'Data export',
+                // titleAttr: 'Export all rows to Excel file',
+            },
+
+         
+
+            {
+                extend: 'copyHtml5',
+                text: 'Copy Data',
+                className: 'btn btn-primary hide',
+                // titleAttr: 'Copy all rows to clipboard',
+            },
+        ],
+
+    });
+
+
+</script>
+
+
+
+}

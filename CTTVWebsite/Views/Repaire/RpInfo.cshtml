@@ -1,0 +1,218 @@
+﻿@{
+    ViewData["Title"] = "Repair Information";
+    ViewData["Show"] = "repair";
+    ViewData["Active"] = "rpinfo";
+}
+
+<h1>@ViewData["Title"]</h1>
+@section Stylesheets
+{
+<link href="~/assets/lib/flatpickr/flatpickr.min.css" rel="stylesheet">
+
+}
+
+
+
+<div class="card-body bg-light">
+    <form method="post" id="idInputForm" asp-action="RpInfo">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="datetimepicker">From Date </label>
+                    <input class="form-control datetimepicker form-control-sm classValidSelect" value="@if(ViewBag.fromDate != null ){@ViewBag.fromDate}" required name="fromDate" id="fromDate" type="text" placeholder="dd/mm/yyyy h:m" data-options='{"enableTime":true,"dateFormat":"d/m/20y H:i:ss"}'>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="datetimepicker">To Date</label>
+                    <input class="form-control datetimepicker form-control-sm classValidSelect" value="@if(ViewBag.toDate != null ){@ViewBag.toDate}" required name="toDate" id="toDate" type="text" placeholder="dd/mm/yyyy h:m" data-options='{"enableTime":true,"dateFormat":"d/m/20y H:i:ss"}'>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="optionchoose">Line Name</label>
+                    <select class="custom-select custom-select-sm mb-3" id="lineName" name="lineName">
+                        <option selected="" value="ALL">ALL</option>
+                        <!option value="TV_A01" @if(ViewBag.lineName != null && ViewBag.lineName == "TV_A01"){@("selected");}>TV_A01</!option>
+                        <!option value="TV_A02" @if(ViewBag.lineName != null && ViewBag.lineName == "TV_A02"){@("selected");}>TV_A02</!option>
+                        <!option value="TV_A03" @if(ViewBag.lineName != null && ViewBag.lineName == "TV_A03"){@("selected");}>TV_A03</!option>
+                        <!option value="TV_A04" @if(ViewBag.lineName != null && ViewBag.lineName == "TV_A04"){@("selected");}>TV_A04</!option>
+                        <!option value="TV_A05" @if(ViewBag.lineName != null && ViewBag.lineName == "TV_A05"){@("selected");}>TV_A05</!option>
+                        <!option value="TV_A06" @if(ViewBag.lineName != null && ViewBag.lineName == "TV_A06"){@("selected");}>TV_A06</!option>
+                        <!option value="TV_A07" @if(ViewBag.lineName != null && ViewBag.lineName == "TV_A07"){@("selected");}>TV_A07</!option>
+                        <!option value="TV_B01" @if(ViewBag.lineName != null && ViewBag.lineName == "TV_B01"){@("selected");}>TV_B01</!option>
+                        <!option value="TV_B02" @if(ViewBag.lineName != null && ViewBag.lineName == "TV_B02"){@("selected");}>TV_B02</!option>
+                         <!option value="TV_B03" @if(ViewBag.lineName != null && ViewBag.lineName == "TV_B03"){@("selected");}>TV_B03</!option>
+                          <!option value="TV_C01" @if(ViewBag.lineName != null && ViewBag.lineName == "TV_C01"){@("selected");}>TV_C01</!option>
+                           <!option value="TV_C02" @if(ViewBag.lineName != null && ViewBag.lineName == "TV_C02"){@("selected");}>TV_C02</!option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="optionchoose">Model Name</label>
+                    <select class="custom-select custom-select-sm mb-3" id="modelname" name="modelname">
+                        <option selected="" value="ALL">ALL</option>
+                        @{
+                            string modelNameSl = "";
+                            if (ViewBag.modelNameSl != null)
+                            {
+                                modelNameSl = string.Format("{0}", ViewBag.modelNameSl);
+                            }
+
+                            if (ViewBag.ModelName != null)
+                            {
+                                foreach (var objModuleName in ViewBag.ModelName)
+                                {
+                                    <!option value="@objModuleName" @if(ViewBag.modelName != null && modelNameSl == objModuleName.ToString()){@("selected");}>@objModuleName</!option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+            </div>      
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <button class="btn btn-primary form-control-sm" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+<div class="alert alert-danger" style="display: none;" id="checkValidSelect" role="alert">Your input data is invalid</div>
+<div class="navbar-vertical-divider">
+    <hr class="navbar-vertical-hr my-2">
+</div>
+
+
+<table id="SearchInOut" class="table table-sm table-dashboard  no-wrap mb-0 fs--1 w-100" style="text-align:center">
+    <thead class="bg-200 text-900">
+        <tr>
+            <th>
+                Model Name
+            </th>
+            <th>
+                LINE NAME
+            </th>
+            <th>
+               Serial Number
+            </th>
+            <th>
+               Test Time
+            </th>
+            <th>
+                Test Station
+            </th>
+             <th>
+                Repair Time
+            </th>
+             <th>
+               Defect Type 
+            </th>
+             <th>
+                Defect Desc
+            </th>
+             <th>
+                Current Group Name
+            </th>
+             <th>
+               In Station Time
+            </th>
+
+        </tr>
+    </thead>
+    <tbody class="list">
+        @if (Model != null)
+        {
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="15%">
+                        @obj.MODEL_NAME
+                    </td>
+                    <td width="10%">
+                        @obj.LINE_NAME
+                    </td>
+                    <td width="15%">
+                        @obj.SERIAL_NUMBER
+                    </td>
+                    <td width="10%">
+                        @obj.TEST_TIME
+                    </td>
+                    <td width="10%">
+                          @obj.TEST_STATION
+                    </td> 
+                       <td width="15%">
+                          @obj.REPAIR_TIME
+                    </td> 
+                       <td width="10%">
+                          @obj.ITEM_DESC
+                    </td> 
+                       <td width="20%">
+                          @obj.MEMO
+                    </td> 
+                       <td width="10%">
+                          @obj.GROUP_NAME
+                    </td> 
+                    <td width="10%">
+                          @obj.IN_STATION_TIME
+                    </td> 
+
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+
+@section Scripts
+{
+    <script src="~/js/custom.js"></script>
+
+<script>
+
+    var dataTable = $('#SearchInOut').DataTable({
+        "sDom": "<'row mb-1' <'col-2'B><'col-2'l><'col-2 text-right'i><'col-2'f><'col-4'p>><'table-responsive't><'row'>",
+        filter: true,
+        "searching": true,
+        "scrollCollapse": true,
+        "paging": true,
+        "lengthMenu": [ [10, 100, 200, 500, -1], [10, 100, 200, 500, "All"] ],
+        // "bSort": true,
+        "info": true,
+
+        buttons: [
+
+            {
+                extend: 'excelHtml5',
+                text: 'Excel',
+                className: 'btn btn-primary hide',
+                title: 'Data export',
+                // titleAttr: 'Export all rows to Excel file',
+            },
+
+         
+
+            {
+                extend: 'copyHtml5',
+                text: 'Copy Data',
+                className: 'btn btn-primary hide',
+                // titleAttr: 'Copy all rows to clipboard',
+            },
+        ],
+
+    });
+
+
+</script>
+<script src="~/assets/lib/flatpickr/flatpickr.min.js"></script>
+
+}

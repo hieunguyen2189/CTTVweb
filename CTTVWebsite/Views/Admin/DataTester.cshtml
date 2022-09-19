@@ -1,0 +1,158 @@
+﻿
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Admin Panel";
+    ViewData["Show"] = "SetupNewModel";
+    ViewData["Active"] = "DataTester";
+}
+
+    <div class="card-body bg-light">
+   @Html.AntiForgeryToken()
+   <div class="row">
+      <div class="col-lg-2">
+         <p>Raw scan list data:</p>
+      </div>
+      <div class="col-lg-10">
+         <textarea id="RawScanlistData" placeholder="GROUP        DIGITS      POSITION        TOTAL" style="width:100%;" rows=10 cols=100></textarea>
+      </div>
+   </div>
+    
+   <br/>
+  <div class="row">
+      <div class="col-lg-2">
+         <p>Input Serial_Number:</p>
+      </div>
+      <div class="col-lg-6">
+         <input type='text' id='serial_number_input' placeholder='SERI_NUMBER' />
+      </div>
+     
+   </div>
+   <br/>
+   <div class="row">
+      <div class="col-lg-2">
+         <button class="btn btn-primary form-control-sm" id='submitCheck' type="button">Generate</button> 
+      </div>
+      <div class="col-lg-2">
+         <div class="loader"></div>
+      </div>
+   </div>
+   <br/>
+   
+
+   <div class="sticky">
+       UNDO
+       <div id="undo"></div><br<br/>
+
+       EMPLOYEE
+       <div id="employee"></div><br/><br/>
+
+       SERIAL_NUMBER
+       <div id="serial_number"></div>
+   </div>
+
+   <br/><br/>   <br/><br/>   
+   <br/>
+
+   <div class="row">
+      <table class="table table-striped" id="result">
+         <thead-light>
+            <tr>
+             <th scope="col">Scanning route name</th>
+             <th scope="col">Sample code</th>
+               <th scope="col">Barcode</th>
+            </tr>
+         </thead>
+         <tbody>
+         </tbody>
+      </table>
+   </div>
+</div>
+@section Scripts
+{
+<script>
+    $( "#submitCheck" ).click(function() {
+        
+        var qrcode = new QRCode(document.getElementById("serial_number"), {
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+        });
+        qrcode.clear();
+        qrcode.makeCode($("#serial_number_input").val());
+
+       //JsBarcode("#serial_number",  $("#serial_number_input").val(),{width:1.5,height:40});
+    });
+
+    var qrcode = new QRCode(document.getElementById("undo"), {
+        text: "UNDO",
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+        });
+
+        var qrcode = new QRCode(document.getElementById("employee"), {
+        text: "V0513581",
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+        });
+    //JsBarcode("#undo", 'UNDO',{width:1.5,height:40, marginBottom:50});
+    //JsBarcode("#employee", 'V0513581',{width:1.5,height:40, marginBottom:50});
+ $("#submitCheck").click(function(){
+		var arrayOfLines = $('#RawScanlistData').val().split('\n');
+        var i=1;
+		$.each(arrayOfLines, function(index, item) {
+			generateData(item,i);
+            i++;
+		});
+   });
+   
+   
+   function generateData(item,i){
+       var id = i;
+	   var strArr = item.split(/\t/);
+	   var ScanRouteData = strArr[0];
+       var digits = strArr[1];
+       var position = strArr[2].split('-');;
+       var total = strArr[3];
+       var prefix = makestr(position[0]-1);
+       var suffix = makestr(total - position[1]);
+       var SampleCode = prefix + digits + suffix;
+       console.log(position[0]-1);
+       console.log(position[1]);
+       console.log(total);
+       console.log(total - position[1]);
+       $('#result > tbody:last-child').append('<tr><td>'+ScanRouteData+'</td><td>'+SampleCode+'</td><td><div id="code'+id+'"></div></td></tr>');
+       //JsBarcode("#code"+i, SampleCode,{width:0.8,height:50});
+
+       var qrcode = new QRCode(document.getElementById("code"+i), {
+        text: SampleCode,
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+        });
+   
+   
+    }
+
+    function makestr(length) {
+        var result           = '';
+        var characters       = 'XYZ';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+          result += characters.charAt(Math.floor(Math.random() * 
+     charactersLength));
+       }
+       return result;
+    }
+   
+</script>
+}

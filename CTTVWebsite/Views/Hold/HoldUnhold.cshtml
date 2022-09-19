@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewData["Title"] = "Hold Summary";
+    ViewData["Show"] = "STT";
+    ViewData["Active"] = "HoldUnhold";
+}
+
+<h1>@ViewData["Title"]</h1>
+@section Stylesheets
+{
+<link href="~/assets/lib/flatpickr/flatpickr.min.css" rel="stylesheet">
+}
+
+<script>
+$(function(){
+    var lines = [];
+    $.each($('#data').val().split(/\n/), function(i, line){
+        if(line){
+            lines.push(line);
+        }
+    });
+    console.log(lines);
+});
+</script>
+<div class="card-body bg-light">
+    <form method="post" asp-action="HoldUnhold" id="idInputForm">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="optionchoose">Hold No</label>
+                        <input class="classInputBox" value="@if(ViewBag.HoldNo != null ){@ViewBag.HoldNo}" name="HoldNo"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="optionchoose">Hold or Unhold</label>
+                    <select class="custom-select custom-select-sm mb-3" required id="HoldSTT" name="HoldSTT">
+                        <!option value="ALL" @if(ViewBag.HoldSTT != null && ViewBag.HoldSTT == "ALL"){@("selected");}>ALL</!option>
+                        <!option value="Hold" @if(ViewBag.HoldSTT != null && ViewBag.HoldSTT == "Hold"){@("selected");}>Hold</!option>
+                        <!option value="Unhold" @if(ViewBag.HoldSTT != null && ViewBag.HoldSTT == "Unhold"){@("selected");}>Unhold</!option>
+                    </select>
+                </div>
+            </div>
+            </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <button class="btn btn-primary form-control-sm" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+<div class="alert alert-danger" style="display: none;" id="checkValidInput" role="alert">Your input data is invalid</div>
+<div class="navbar-vertical-divider">
+    <hr class="navbar-vertical-hr my-2">
+</div>
+
+
+<table id="SearchInOut" class="table table-sm table-dashboard  no-wrap mb-0 fs--1 w-100">
+    <thead class="bg-200 text-900">
+        <tr>
+            <th>
+            </th>
+            <th>
+                HOLD NO
+            </th>
+                        <th>
+                APPLY REASON
+                </th>
+            <th>
+               TOTAL COUNT
+            </th>
+            <th>
+               APPLY TIME   
+            </th>
+            <th>
+               HOLD DAYS
+            </th>
+            <TH>
+                HOLD NO
+            </TH>
+            <TH>
+                UNHOLD NO
+            </TH>
+
+        </tr>
+    </thead>
+    <tbody class="list">
+        @if (Model != null)
+        {
+            var counter = 1;
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>
+                        @counter
+                        @{
+                            counter = counter + 1;
+                        }
+                    </td>
+                    <td width="15%">
+                        @obj.TABLE_NO
+                    </td>
+                                        <td width="25%">
+                        @obj.APPLY_REASON
+                        </td>
+                    <td width="10%">
+                        @obj.TOTAL_COUNT
+                    </td>
+                    <td width="20%">
+                        @obj.APPLY_TIME
+                    </td>
+                    <td width="10%">
+                        @obj.HOLD_DAYS
+                        </td>
+                         <td width="10%">
+                        @obj.HOLD_NO 
+                        </td>
+                        <td width="10%">
+                        @obj.UNHOLD_NO 
+                        </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+
+@section Scripts
+{
+
+    <script src="~/js/custom.js"></script>
+<script>
+
+    var dataTable = $('#SearchInOut').DataTable({
+        "sDom": "<'row mb-1' <'col-2'B><'col-2'l><'col-2 text-right'i><'col-2'f><'col-4'p>><'table-responsive't><'row'>",
+        filter: true,
+        "searching": true,
+        "scrollCollapse": true,
+        "paging": true,
+        "lengthMenu": [ [10, 100, 200, 500, -1], [10, 100, 200, 500, "All"] ],
+        // "bSort": true,
+        "info": true,
+
+        buttons: [
+
+            {
+                extend: 'excelHtml5',
+                text: 'Excel',
+                className: 'btn btn-primary hide',
+                title: 'Data export',
+                // titleAttr: 'Export all rows to Excel file',
+            },
+
+            
+
+            {
+                extend: 'copyHtml5',
+                text: 'Copy Data',
+                className: 'btn btn-primary hide',
+                // titleAttr: 'Copy all rows to clipboard',
+            },
+        ],
+
+    });
+
+
+</script>
+<script src="~/assets/lib/flatpickr/flatpickr.min.js"></script>
+
+}
+

@@ -1,0 +1,187 @@
+﻿@{
+    ViewData["Title"] = "Output Detail";
+    ViewData["Show"] = "InOut";
+    ViewData["Active"] = "SearchDetailedOut";
+}
+
+<h1>@ViewData["Title"]</h1>
+@section Stylesheets
+{
+<link href="~/assets/lib/flatpickr/flatpickr.min.css" rel="stylesheet">
+
+}
+
+
+<div class="card-body bg-light">
+    <form method="post" id="idInputForm" asp-action="SearchDetailedOut">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="datetimepicker">From Date </label>
+                    <input class="form-control datetimepicker form-control-sm classValidSelect" value="@if(ViewBag.fromDate != null ){@ViewBag.fromDate}" required name="fromDate" id="fromDate" type="text" placeholder="dd/mm/yyyy h:m" data-options='{"enableTime":true,"dateFormat":"d/m/20y H:i:ss"}'>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="datetimepicker">To Date</label>
+                    <input class="form-control datetimepicker form-control-sm classValidSelect" value="@if(ViewBag.toDate != null ){@ViewBag.toDate}" required name="toDate" id="toDate" type="text" placeholder="dd/mm/yyyy h:m" data-options='{"enableTime":true,"dateFormat":"d/m/20y H:i:ss"}'>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="optionchoose">Model Name</label>
+                    <select class="custom-select custom-select-sm mb-3" required id="modelName" name="modelName">
+                        <option selected="" value="">Open this select menu</option>
+                        @{
+                            string modelNameSl = "";
+                            if (ViewBag.modelNameSl != null)
+                            {
+                                modelNameSl = string.Format("{0}", ViewBag.modelNameSl);
+                            }
+
+                            if (ViewBag.ModelName != null)
+                            {
+                                foreach (var objModuleName in ViewBag.ModelName)
+                                {
+                                    <!option value="@objModuleName" @if(ViewBag.modelName != null && modelNameSl == objModuleName.ToString()){@("selected");}>@objModuleName</!option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <button class="btn btn-primary form-control-sm" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+<div class="alert alert-danger" style="display: none;" id="checkValidSelect" role="alert">Your input data is invalid</div>
+<div class="navbar-vertical-divider">
+    <hr class="navbar-vertical-hr my-2">
+</div>
+
+
+<table id="SearchInOut" class="table table-sm table-dashboard  no-wrap mb-0 fs--1 w-100" style="text-align:center">
+    <thead class="bg-200 text-900">
+        <tr>
+            <th>
+            </th>
+            <th>
+                SERIAL_NUMBER
+            </th>
+            <th>
+                MODEL_NAME
+            </th>
+            <th>
+                GROUP_NAME
+            </th>
+            <th>
+                First output time
+            </th>
+            <th>
+                Last output time
+            </th>
+            <th>
+                Count output
+            </th>
+            <th>
+                LINE_NAME
+            </th>
+
+        </tr>
+    </thead>
+    <tbody class="list">
+        @if (Model != null)
+        {
+            var counter = 1;
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>
+                        @counter
+                        @{
+                            counter = counter + 1;
+                        }
+                    </td>
+                    <td width="20%">
+                        @obj.SERIAL_NUMBER
+                    </td>
+                     <td width="20%">
+                        @obj.MODEL_NAME
+                    </td>
+                    <td width="20%">
+                        @obj.GROUP_NAME
+                    </td>
+                    <td width="20%">
+                        @obj.FIRST_TIME
+                    </td>
+                    <td width="20%">
+                        @obj.LAST_TIME
+                    </td>
+                    <td width="20%">
+                        @obj.NUM
+                    </td>
+                    <td>
+                        @obj.LINE_NAME
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+
+@section Scripts
+{
+
+<script src="~/js/custom.js"></script>
+
+<script>
+
+    var dataTable = $('#SearchInOut').DataTable({
+        "sDom": "<'row mb-1' <'col-2'B><'col-2'l><'col-2 text-right'i><'col-2'f><'col-4'p>><'table-responsive't><'row'>",
+        filter: true,
+        "searching": true,
+        "scrollCollapse": true,
+        "paging": true,
+        "lengthMenu": [ [10, 100, 200, 500, -1], [10, 100, 200, 500, "All"] ],
+        // "bSort": true,
+        "info": true,
+
+        buttons: [
+
+            {
+                extend: 'excelHtml5',
+                text: 'Excel',
+                className: 'btn btn-primary hide',
+                title: 'Data export',
+                // titleAttr: 'Export all rows to Excel file',
+            },
+
+           
+            {
+                extend: 'copyHtml5',
+                text: 'Copy Data',
+                className: 'btn btn-primary hide',
+                // titleAttr: 'Copy all rows to clipboard',
+            },
+        ],
+
+    });
+
+
+</script>
+<script src="~/assets/lib/flatpickr/flatpickr.min.js"></script>
+
+}
